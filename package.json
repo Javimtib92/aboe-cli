@@ -7,8 +7,14 @@
     "archlet": "./bin/archlet.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint .",
+    "format": "npx prettier . --write"
   },
   "author": "Javier Muñoz Tous",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "3.2.5"
+  }
 }
