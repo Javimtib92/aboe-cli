@@ -1,0 +1,14 @@
+{
+  "name": "archlet",
+  "version": "1.0.0",
+  "description": "Archlet coding challenge (Console App)",
+  "main": "./bin/archlet.js",
+  "bin": {
+    "archlet": "./bin/archlet.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Javier Muñoz Tous",
+  "license": "ISC"
+}
