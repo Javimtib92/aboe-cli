@@ -5,6 +5,7 @@ import { partialReadCommand } from '../commands/partialRead.mjs';
 
 const program = new Command();
 
+console.log(process.argv.slice(2));
 program.addHelpText(
   'before',
   figlet.textSync('Archlet CLI', {
@@ -37,7 +38,7 @@ program.on('option:verbose', function () {
   process.env.VERBOSITY = 'verbose';
 });
 
-// node ./bin/archlet.mjs json2csv -i example.json -o output.json -v
+// node ./bin/archlet.mjs json2csv --input example.json --output output.json --verbose
 program
   .command('json2csv')
   .description('Converts a JSON file to CSV')
@@ -48,7 +49,7 @@ program
   .option('-o, --output <string>', 'specifies the output path for the file')
   .action(json2CsvCommand);
 
-// node ./bin/archlet.mjs partialRead -i example.json --length 6 --offset 19 -v
+// node ./bin/archlet.mjs partialRead --input example.json --length 6 --offset 19 --verbose
 program
   .command('partialRead')
   .description('Reads a portion of a given file')
@@ -56,9 +57,9 @@ program
     '-i, --input <string>',
     'specifies the input path for the file'
   )
-  .option('--length <number>', 'specifies the character count to read')
+  .option('-l, --length <number>', 'specifies the character count to read')
   .option(
-    '--offset <number>',
+    '-o, --offset <number>',
     'specifies the offset from where to start reading'
   )
   .action(partialReadCommand);
