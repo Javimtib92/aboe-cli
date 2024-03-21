@@ -50,6 +50,7 @@ program
   .action(json2CsvCommand);
 
 // node ./bin/archlet.mjs partialRead --input example.json --length 6 --offset 19 --verbose
+// pipe works too node ./bin/archlet.mjs partialRead --input example.json --length 6 --offset 19 | grep 'Ja' -o
 program
   .command('partialRead')
   .description('Reads a portion of a given file')
