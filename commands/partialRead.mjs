@@ -4,11 +4,13 @@ import { Logger } from '../utils/logger.mjs';
 export async function partialReadCommand(options) {
   const { input, length = 5, offset = 0 } = options;
 
-  const file = await fs.open(input);
-
-  Logger.log('Reading file: ', input);
+  let file;
+  let error;
 
   try {
+    file = await fs.open(input);
+    Logger.log('Reading file: ', input);
+
     const something = await file.read(
       Buffer.alloc(+length),
       0,
@@ -21,11 +23,14 @@ export async function partialReadCommand(options) {
     return something.buffer.toString();
   } catch (e) {
     Logger.error(e);
-    process.exit(1);
+    error = true;
   } finally {
     Logger.log('Closing file... ');
+
     await file.close();
 
     Logger.log('File closed');
+
+    process.exit(error ? 1 : 0);
   }
 }
