@@ -37,7 +37,7 @@ program.on('option:verbose', function () {
   process.env.VERBOSITY = 'verbose';
 });
 
-// node ./bin/archlet.mjs json2csv -i example.json -o output.json -d
+// node ./bin/archlet.mjs json2csv -i example.json -o output.json -v
 program
   .command('json2csv')
   .description('Converts a JSON file to CSV')
@@ -48,7 +48,7 @@ program
   .option('-o, --output <string>', 'specifies the output path for the file')
   .action(json2CsvCommand);
 
-// node ./bin/archlet.mjs partialRead -i example.json --length 6 --offset 19 -d
+// node ./bin/archlet.mjs partialRead -i example.json --length 6 --offset 19 -v
 program
   .command('partialRead')
   .description('Reads a portion of a given file')
@@ -63,4 +63,4 @@ program
   )
   .action(partialReadCommand);
 
-program.parse();
+program.parseAsync();
