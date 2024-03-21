@@ -4,10 +4,10 @@
   "description": "Archlet coding challenge (Console App)",
   "main": "./bin/archlet.js",
   "bin": {
-    "archlet": "./bin/archlet.js"
+    "archlet-cli": "./bin/archlet.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test",
     "lint": "npx eslint .",
     "format": "npx prettier . --write"
   },
@@ -16,5 +16,9 @@
   "devDependencies": {
     "eslint": "^8.57.0",
     "prettier": "3.2.5"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "figlet": "^1.7.0"
   }
 }
