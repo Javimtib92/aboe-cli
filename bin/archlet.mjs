@@ -2,10 +2,10 @@ import { Command } from 'commander';
 import figlet from 'figlet';
 import { json2CsvCommand } from '../commands/json2Csv.mjs';
 import { partialReadCommand } from '../commands/partialRead.mjs';
+import { getVersion } from '../utils/version.mjs';
 
 const program = new Command();
 
-console.log(process.argv.slice(2));
 program.addHelpText(
   'before',
   figlet.textSync('Archlet CLI', {
@@ -28,7 +28,7 @@ program
     '-v, --verbose',
     'Logs transactions and events such as managing files.'
   )
-  .version('1.0.0');
+  .version(getVersion());
 
 program.on('option:quiet', function () {
   process.env.VERBOSITY = 'quiet';
