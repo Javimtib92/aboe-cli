@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import figlet from 'figlet';
 import { json2CsvCommand } from '../commands/json2Csv.mjs';
-import { partialRead } from '../commands/partialRead.mjs';
+import { partialReadCommand } from '../commands/partialRead.mjs';
 
 const program = new Command();
 
@@ -15,11 +15,29 @@ program.addHelpText(
   })
 );
 
+// node ./bin/archlet.mjs
 program
   .name('archlet-cli')
   .description('CLI to some JavaScript string utilities')
+  .option(
+    '-q, --quiet',
+    'No message needed. Users care about this mode when they don’t need to know the response. Therefore, it is not necessary to disclose any message in the output unless there is an error.'
+  )
+  .option(
+    '-v, --verbose',
+    'Logs transactions and events such as managing files.'
+  )
   .version('1.0.0');
 
+program.on('option:quiet', function () {
+  process.env.VERBOSITY = 'quiet';
+});
+
+program.on('option:verbose', function () {
+  process.env.VERBOSITY = 'verbose';
+});
+
+// node ./bin/archlet.mjs json2csv -i example.json -o output.json -d
 program
   .command('json2csv')
   .description('Converts a JSON file to CSV')
@@ -30,6 +48,7 @@ program
   .option('-o, --output <string>', 'specifies the output path for the file')
   .action(json2CsvCommand);
 
+// node ./bin/archlet.mjs partialRead -i example.json --length 6 --offset 19 -d
 program
   .command('partialRead')
   .description('Reads a portion of a given file')
@@ -42,6 +61,6 @@ program
     '--offset <number>',
     'specifies the offset from where to start reading'
   )
-  .action(partialRead);
+  .action(partialReadCommand);
 
 program.parse();
