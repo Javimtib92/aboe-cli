@@ -4,25 +4,20 @@ import { Logger } from '../utils/logger.mjs';
 export async function json2CsvCommand(options) {
   const { input, output } = options;
 
-  try {
-    const inputJSON = await fs.readFile(input, 'utf-8');
+  const inputJSON = await fs.readFile(input, 'utf-8');
 
-    const json = JSON.parse(inputJSON);
+  const json = JSON.parse(inputJSON);
 
-    const header = Object.keys(json[0]).join(',') + '\n';
-    const rows = json.map((obj) => Object.values(obj).join(',')).join('\n');
+  const header = Object.keys(json[0]).join(',') + '\n';
+  const rows = json.map((obj) => Object.values(obj).join(',')).join('\n');
 
-    const csv = header + rows;
+  const csv = header + rows;
 
-    const out = output || input.split('.')[0] + '.csv';
+  const out = output || input.split('.')[0] + '.csv';
 
-    await fs.writeFile(out, csv);
+  await fs.writeFile(out, csv);
 
-    Logger.success('The file has been saved!');
+  Logger.success('The file has been saved!');
 
-    return { file: out, data: csv };
-  } catch (e) {
-    Logger.error(e);
-    throw new Error(e);
-  }
+  return { file: out, data: csv };
 }

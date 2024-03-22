@@ -33,14 +33,6 @@ describe('json2Csv Command', () => {
     const error = new Error('Cannot read file');
     mock.method(fs, 'readFile', async () => Promise.reject(error));
 
-    (async () => {
-      await assert.rejects(
-        async () => await json2CsvCommand({ input: 'nonexistent.json' }),
-        (err) => {
-          assert.strictEqual(err.message, 'Error: Cannot read file');
-          return true;
-        }
-      );
-    })();
+    assert.rejects(() => json2CsvCommand({ input: 'nonexistent.json' }), error);
   });
 });

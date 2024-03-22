@@ -7,7 +7,7 @@
     "archlet-cli": "./bin/archlet.js"
   },
   "scripts": {
-    "test": "VERBOSITY=quiet node --test",
+    "test": "node --test",
     "lint": "npx eslint .",
     "format": "npx prettier . --write"
   },
