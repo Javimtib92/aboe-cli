@@ -18,6 +18,10 @@ export const Logger = (() => {
       console.log(...args);
     },
     error(error, ...args) {
+      if (isQuiet()) {
+        return;
+      }
+
       console.error(styleText('red', error.stack), ...args);
     },
     success(message, ...args) {
