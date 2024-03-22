@@ -49,7 +49,7 @@ program
     '-v, --verbose',
     'Logs transactions and events such as managing files.'
   )
-  .version(await getVersion());
+  .version(getVersion());
 
 // node ./bin/archlet.mjs json2csv --input example.json --output output.json --verbose
 program
