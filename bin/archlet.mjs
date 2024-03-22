@@ -3,6 +3,7 @@ import figlet from 'figlet';
 import { json2CsvCommand } from '../commands/json2Csv.mjs';
 import { partialReadCommand } from '../commands/partialRead.mjs';
 import { getVersion } from '../utils/version.mjs';
+import { interactiveCommand } from '../commands/interactive.mjs';
 
 const program = new Command();
 
@@ -28,7 +29,7 @@ program
     '-v, --verbose',
     'Logs transactions and events such as managing files.'
   )
-  .version(getVersion());
+  .version(await getVersion());
 
 program.on('option:quiet', function () {
   process.env.VERBOSITY = 'quiet';
@@ -65,4 +66,8 @@ program
   )
   .action(partialReadCommand);
 
+program
+  .command('interactive')
+  .description('Opens an interactive CLI')
+  .action(interactiveCommand);
 program.parseAsync();

@@ -1,7 +1,9 @@
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
 
-export function getVersion() {
+import packageFile from '../package.json' with { type: 'json' };
+
+export function getVersionV2() {
   const packageFile = path.join(import.meta.dirname, '..', 'package.json');
 
   const data = readFileSync(packageFile, 'utf-8');
@@ -15,4 +17,8 @@ export function getVersion() {
   }
 
   return null;
+}
+
+export async function getVersion() {
+  return packageFile.version;
 }

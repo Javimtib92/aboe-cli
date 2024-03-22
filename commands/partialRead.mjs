@@ -23,14 +23,16 @@ export async function partialReadCommand(options) {
     return something.buffer.toString();
   } catch (e) {
     Logger.error(e);
-    error = true;
+    error = e;
   } finally {
     Logger.log('Closing file... ');
 
     await file.close();
 
     Logger.log('File closed');
+  }
 
-    process.exit(error ? 1 : 0);
+  if (error) {
+    throw new Error(error);
   }
 }

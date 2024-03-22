@@ -23,6 +23,6 @@ export async function json2CsvCommand(options) {
     return { file: out, data: csv };
   } catch (e) {
     Logger.error(e);
-    process.exit(1);
+    throw new Error(e);
   }
 }

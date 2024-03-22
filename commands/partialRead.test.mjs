@@ -4,18 +4,18 @@ import { promises as fs } from 'node:fs';
 import { partialReadCommand } from './partialRead.mjs';
 
 describe('partialRead Command', () => {
-  it('should process properly', async () => {
-    const jsonFileContent = `[
-      {
-        name: 'Javier',
-        age: 32,
-      },
-      {
-        name: 'Julia',
-        age: 31,
-      },
-    ])`;
+  const jsonFileContent = `[
+        {
+          name: 'Javier',
+          age: 32,
+        },
+        {
+          name: 'Julia',
+          age: 31,
+        },
+      ])`;
 
+  it('should process properly', async () => {
     mock.method(fs, 'open', async () =>
       Promise.resolve({
         buffer: Buffer.from(jsonFileContent),
@@ -38,9 +38,38 @@ describe('partialRead Command', () => {
     const result = await partialReadCommand({
       input: 'file.txt',
       length: '6',
-      offset: '25',
+      offset: '29',
     });
 
     assert.equal(result, 'Javier');
+  });
+
+  it('should close the file if a exception is thrown when reading', async () => {
+    mock.method(fs, 'open', async () =>
+      Promise.resolve({
+        buffer: Buffer.from(jsonFileContent),
+        async read() {
+          throw new Error('Cannot read file');
+        },
+        async close() {
+          // No need to close, it's a mock
+        },
+      })
+    );
+
+    (async () => {
+      await assert.rejects(
+        async () =>
+          await partialReadCommand({
+            input: 'file.txt',
+            length: '6',
+            offset: '25',
+          }),
+        (err) => {
+          assert.strictEqual(err.message, 'Error: Cannot read file');
+          return true;
+        }
+      );
+    })();
   });
 });
