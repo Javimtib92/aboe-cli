@@ -1,0 +1,19 @@
+#docs
+docs
+
+#tests
+test
+coverage
+
+#linters
+.jscsrc
+.jshintrc
+.eslintrc*
+
+#formatter
+.prettierrc
+
+#editor settings
+.idea
+.editorconfig
+.vscode

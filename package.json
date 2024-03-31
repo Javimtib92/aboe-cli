@@ -1,6 +1,5 @@
 {
   "name": "aboe-cli",
-  "type": "module",
   "version": "0.0.2",
   "description": "A bit of everything CLI is a multi-purpose CLI with a set of handful utility commands for day-to-day tasks.",
   "module": "./bin/aboe.mjs",
@@ -16,6 +15,11 @@
     "type": "git",
     "url": "git+https://github.com/Javimtib92/aboe-cli.git"
   },
+  "keywords": [
+    "node",
+    "cli",
+    "multi-purpose"
+  ],
   "author": "javimtib92",
   "license": "MIT",
   "bugs": {
@@ -28,8 +32,7 @@
   },
   "dependencies": {
     "commander": "^12.0.0",
-    "figlet": "^1.7.0",
-    "typescript": "^5.4.3"
+    "figlet": "^1.7.0"
   },
   "engines": {
     "node": ">=21.7.1"
