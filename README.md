@@ -14,7 +14,7 @@
 
 ## Installation
 
-To install aboe-cli, ensure you have Node.js version `21.7.1` installed on your system. You can use nvm (Node Version Manager) to manage Node.js versions. The required Node.js version is enforced by the provided .nvmrc file.
+To install aboe-cli, ensure you have at least Node.js version `21.7.1` installed on your system. You can use nvm (Node Version Manager) to manage Node.js versions. The required Node.js version is enforced by the provided .nvmrc file.
 
 ```bash
 # Install aboe-cli globally using npm
