@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-    aboe-cli (A bit of everything CLI) is a multi-purpose CLI with a set of handful utility commands for for day-to-day tasks.
+    aboe-cli (A bit of everything CLI) is a multi-purpose CLI with a set of handful utility commands for day-to-day tasks.
     <br />
     <br />
 </p>
