@@ -29,21 +29,21 @@ After installation, you can use aboe-cli from the command line. Here are some ba
 
 ```bash
 # Display help and list available commands
-aboe --help
+aboe-cli --help
 
 # Run a specific utility command
-aboe json2csv [options]
+aboe-cli json2csv [options]
 ```
 
 ## Global Options
 
 ### `-q, --quiet`
 
-This option enables quiet mode, where no message is displayed in the output unless there is an error. Users might prefer this mode when they don't need to see responses for every action performed by the tool.
+This option enables quiet mode, where no message is displayed in the output unless there is an error. You might prefer this mode when you don't need to see responses for every action performed by the cli.
 
 ### `-v, --verbose`
 
-The verbose option enables detailed logging of transactions and events, such as managing files. It provides more insights into the operations performed by *aboe-cli*, which can be useful for debugging or understanding the tool's behavior.
+The verbose option enables detailed logging of transactions and events, such as managing files. It provides more insights into the operations performed by *aboe-cli*, which can be useful for debugging.
 
 ## Available Commands
 
@@ -53,7 +53,7 @@ This command is used to convert JSON data into CSV format.
 
 ```bash
 # Usage example of json2csv
-aboe json2csv -i input.json -o output/output.json
+aboe-cli json2csv -i input.json -o output/output.json
 ```
 
 Options:
