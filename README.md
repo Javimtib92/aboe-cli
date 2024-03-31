@@ -1,7 +1,6 @@
 ![aboe CLI terminal](/docs/images/hero.png)
 
 
-
 <p align="center">
 	<h1 align="center"><b>aboe-cli </b></h1>
 </p>
@@ -11,6 +10,9 @@
     <br />
     <br />
 </p>
+
+[![Latest version](https://img.shields.io/npm/v/aboe-cli.svg?style=flat&label=npm%20package&color=%234B78E6&logo=&logoColor=white)](https://www.npmjs.com/package/aboe-cli)
+
 
 ## Installation
 
