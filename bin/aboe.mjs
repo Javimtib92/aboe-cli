@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Command } from 'commander';
 import figlet from 'figlet';
 import { json2CsvCommand } from '../commands/json2Csv.mjs';
