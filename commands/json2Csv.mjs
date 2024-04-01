@@ -5,12 +5,21 @@ export async function json2CsvCommand(options) {
   const { input, output } = options;
 
   const inputJSON = await fs.readFile(input, 'utf-8');
-
   const json = JSON.parse(inputJSON);
 
-  const header = Object.keys(json[0]).join(',') + '\n';
-  const rows = json.map((obj) => Object.values(obj).join(',')).join('\n');
+  const allKeysSet = new Set();
 
+  for (let i = 0; i < json.length; i++) {
+    Object.keys(json[i]).forEach((key) => allKeysSet.add(key));
+  }
+
+  const allKeys = [...allKeysSet];
+
+  const rows = json
+    .map((obj) => allKeys.map((key) => obj[key] || '').join(','))
+    .join('\n');
+
+  const header = allKeys.join(',') + '\n';
   const csv = header + rows;
 
   const out = output || input.split('.')[0] + '.csv';

@@ -35,4 +35,30 @@ describe('json2Csv Command', () => {
 
     assert.rejects(() => json2CsvCommand({ input: 'nonexistent.json' }), error);
   });
+
+  it('should merge columns when objects have different keys', async () => {
+    const jsonFileContent = JSON.stringify([
+      {
+        name: 'javier',
+        age: 32,
+        country: 'Spain',
+      },
+      {
+        name: 'julia',
+        age: 31,
+      },
+    ]);
+    mock.method(fs, 'readFile', async () => jsonFileContent);
+    mock.method(fs, 'writeFile', async () => true);
+
+    const result = await json2CsvCommand({ input: 'file.txt' });
+
+    assert.strictEqual(fs.readFile.mock.calls.length, 1);
+    assert.strictEqual(fs.writeFile.mock.calls.length, 1);
+
+    assert.deepStrictEqual(result, {
+      file: 'file.csv',
+      data: 'name,age,country\njavier,32,Spain\njulia,31,',
+    });
+  });
 });

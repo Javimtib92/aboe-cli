@@ -7,7 +7,7 @@
     "aboe-cli": "./bin/aboe.mjs"
   },
   "scripts": {
-    "test": "node --test",
+    "test": "node --test --experimental-test-coverage",
     "lint": "npx eslint .",
     "format": "npx prettier . --write"
   },
@@ -23,8 +23,8 @@
   "author": "javimtib92",
   "license": "MIT",
   "bugs": {
-		"url": "https://github.com/Javimtib92/aboe-cli/issues"
-	},
+    "url": "https://github.com/Javimtib92/aboe-cli/issues"
+  },
   "homepage": "https://github.com/Javimtib92/aboe-cli#readme",
   "devDependencies": {
     "eslint": "^8.57.0",
