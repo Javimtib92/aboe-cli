@@ -1,6 +1,6 @@
 {
   "name": "aboe-cli",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "description": "A bit of everything CLI is a multi-purpose CLI with a set of handful utility commands for day-to-day tasks.",
   "module": "./bin/aboe.mjs",
   "bin": {
